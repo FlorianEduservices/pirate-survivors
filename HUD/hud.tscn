@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://paaep8nwiu2w"]
+
+[ext_resource type="Script" uid="uid://bs42m15rkghi0" path="res://HUD/hud.gd" id="1_h61sl"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_h61sl")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Score: "
+
+[node name="LifeProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 277.0
+grow_vertical = 0
+value = 50.0
