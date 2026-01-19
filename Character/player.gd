@@ -2,13 +2,15 @@ extends RigidBody2D
 
 @export var speed : float = 200
 @export var cannon_ball_scene : PackedScene
+@export var max_life : float = 300.0
 
 var score : int = 0
+var current_life
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timeout)
-
+	current_life = max_life
 
 # We are using a RigidBody, apply_central_force must be applied in the Physics Process Function
 #func _process(delta: float) -> void:

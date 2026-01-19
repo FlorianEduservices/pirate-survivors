@@ -8,9 +8,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if is_collected == true and $CollectCoinSFX.playing == false:
-		queue_free()
+#func _process(delta: float) -> void:
+#	if is_collected == true and $CollectCoinSFX.playing == false:
+#		queue_free()
 
 func _on_body_entered(body: Node2D):
 	if body.has_method("update_score") and is_collected == false:
@@ -18,4 +18,7 @@ func _on_body_entered(body: Node2D):
 		$AnimatedSprite2D.hide()
 		$CollectCoinSFX.play()
 		is_collected = true
-		#queue_free()
+		
+		await $CollectCoinSFX.finished
+		
+		queue_free()
