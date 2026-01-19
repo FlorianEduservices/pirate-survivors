@@ -39,6 +39,7 @@ func _shoot(socket : Vector2, cannon_ball_rotation : float):
 	cannon_ball.position = position + socket.rotated(rotation)
 	cannon_ball.rotation = cannon_ball_rotation 
 	cannon_ball.initial_velocity = linear_velocity
+	cannon_ball.instigator = self
 	get_tree().root.add_child(cannon_ball)
 	
 	# queue_free() #destroy the object
