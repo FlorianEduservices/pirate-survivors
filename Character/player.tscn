@@ -9,7 +9,7 @@
 radius = 38.0
 height = 114.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 gravity_scale = 0.0
 linear_damp = 1.5
 script = ExtResource("1_3c51y")
