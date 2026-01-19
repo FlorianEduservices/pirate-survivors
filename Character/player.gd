@@ -3,36 +3,39 @@ extends RigidBody2D
 @export var speed : float = 200
 @export var cannon_ball_scene : PackedScene
 
-var velocity
+var force
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ShootTimer.timeout.connect(_shoot)
+	$ShootTimer.timeout.connect(_on_shoot_timeout)
 
 
 # We are using a RigidBody, apply_central_force must be applied in the Physics Process Function
 #func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Decplacement :
-	velocity = Vector2.ZERO
+	force = Vector2.ZERO
 	if Input.is_action_pressed("player_move_left"):
-		velocity += Vector2(-speed, 0)
+		force += Vector2(-speed, 0)
 	if Input.is_action_pressed("player_move_right"):
-		velocity += Vector2(speed, 0)
+		force += Vector2(speed, 0)
 	if Input.is_action_pressed("player_move_up"):
-		velocity += Vector2(0, -speed)
+		force += Vector2(0, -speed)
 	if Input.is_action_pressed("player_move_down"):
-		velocity += Vector2(0, speed)
-	if velocity.length() > 0:
-		apply_central_force(velocity)
-		rotation = velocity.angle() # Orient le bateau dans le sens de sa velocites
+		force += Vector2(0, speed)
+	if force.length() > 0:
+		apply_central_force(force)
+		rotation = force.angle() # Orient le bateau dans le sens de sa velocites
 	
+func _on_shoot_timeout():
+	_shoot(Vector2(0, 20), rotation + PI / 2)
+	_shoot(Vector2(0, -20), rotation + (-PI) / 2)
 	
-func _shoot():
+func _shoot(socket : Vector2, cannon_ball_rotation : float):
 	var cannon_ball = cannon_ball_scene.instantiate()
-	cannon_ball.position = position + Vector2(0, 20).rotated(rotation)
-	cannon_ball.rotation = rotation + PI / 2 
-	cannon_ball.initial_velocity = velocity
+	cannon_ball.position = position + socket.rotated(rotation)
+	cannon_ball.rotation = cannon_ball_rotation 
+	cannon_ball.initial_velocity = linear_velocity
 	get_tree().root.add_child(cannon_ball)
 	
 	
