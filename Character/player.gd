@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 		force += Vector2(0, -speed)
 	if Input.is_action_pressed("player_move_down"):
 		force += Vector2(0, speed)
+	
 	if force.length() > 0:
 		apply_central_force(force)
 		rotation = force.angle() # Orient le bateau dans le sens de sa velocites
