@@ -3,8 +3,6 @@ extends RigidBody2D
 @export var speed : float = 200
 @export var cannon_ball_scene : PackedScene
 
-var force
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timeout)
@@ -14,7 +12,7 @@ func _ready() -> void:
 #func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Decplacement :
-	force = Vector2.ZERO
+	var force = Vector2.ZERO
 	if Input.is_action_pressed("player_move_left"):
 		force += Vector2(-speed, 0)
 	if Input.is_action_pressed("player_move_right"):
@@ -37,5 +35,7 @@ func _shoot(socket : Vector2, cannon_ball_rotation : float):
 	cannon_ball.rotation = cannon_ball_rotation 
 	cannon_ball.initial_velocity = linear_velocity
 	get_tree().root.add_child(cannon_ball)
+	
+	# queue_free() #destroy the object
 	
 	
