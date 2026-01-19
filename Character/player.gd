@@ -3,6 +3,8 @@ extends RigidBody2D
 @export var speed : float = 200
 @export var cannon_ball_scene : PackedScene
 
+var score : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timeout)
@@ -30,7 +32,7 @@ func _on_shoot_timeout():
 	_shoot(Vector2(0, -20), rotation + (-PI) / 2)
 	
 func _shoot(socket : Vector2, cannon_ball_rotation : float):
-	var cannon_ball = cannon_ball_scene.instantiate()
+	var cannon_ball = cannon_ball_scene.instantiate() # spawn
 	cannon_ball.position = position + socket.rotated(rotation)
 	cannon_ball.rotation = cannon_ball_rotation 
 	cannon_ball.initial_velocity = linear_velocity
@@ -38,4 +40,6 @@ func _shoot(socket : Vector2, cannon_ball_rotation : float):
 	
 	# queue_free() #destroy the object
 	
-	
+func update_score(additional_score : int):
+	self.score += additional_score
+	print("Player score: ", score)

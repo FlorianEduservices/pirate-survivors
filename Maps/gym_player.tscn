@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://qbrbuhr8o5hd"]
+[gd_scene load_steps=4 format=4 uid="uid://qbrbuhr8o5hd"]
 
 [ext_resource type="TileSet" uid="uid://c2kf8bvcp1obx" path="res://Terrain/ocean.tres" id="1_7b103"]
 [ext_resource type="PackedScene" uid="uid://dqqbg7v6gi3eh" path="res://Character/player.tscn" id="2_6hhq5"]
+[ext_resource type="PackedScene" uid="uid://cloyrvvgqnchd" path="res://GPE/Coin/coin.tscn" id="3_6hhq5"]
 
 [node name="GymPlayer" type="Node2D"]
 
@@ -11,3 +12,21 @@ tile_set = ExtResource("1_7b103")
 
 [node name="Player" parent="." instance=ExtResource("2_6hhq5")]
 position = Vector2(575, 321)
+
+[node name="Coin" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(859, 382)
+
+[node name="Coin2" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(866, 463)
+
+[node name="Coin3" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(865, 540)
+
+[node name="Coin4" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(1040, 542)
+
+[node name="Coin5" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(1040, 449)
+
+[node name="Coin6" parent="." instance=ExtResource("3_6hhq5")]
+position = Vector2(1039, 370)
