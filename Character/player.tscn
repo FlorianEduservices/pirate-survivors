@@ -15,9 +15,11 @@ script = ExtResource("1_3c51y")
 cannon_ball_scene = ExtResource("2_2brrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
 texture = ExtResource("1_6ele1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_3c51y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
