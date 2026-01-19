@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqqbg7v6gi3eh"]
+
+[ext_resource type="Script" uid="uid://cyn55tidsfwr2" path="res://Character/player.gd" id="1_3c51y"]
+[ext_resource type="Texture2D" uid="uid://ccebsbowlxhaa" path="res://Character/Textures/PlayerShip.png" id="1_6ele1"]
+[ext_resource type="PackedScene" uid="uid://be761ffno5iy8" path="res://GPE/CannonBall/cannon_ball.tscn" id="2_2brrg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3c51y"]
+radius = 38.0
+height = 114.0
+
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 1.5
+script = ExtResource("1_3c51y")
+cannon_ball_scene = ExtResource("2_2brrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ele1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3c51y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true

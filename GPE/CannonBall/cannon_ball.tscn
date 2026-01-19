@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://be761ffno5iy8"]
+
+[ext_resource type="Texture2D" uid="uid://doahyfpbedaly" path="res://GPE/CannonBall/Textures/cannonBall.png" id="1_f08vj"]
+[ext_resource type="Script" uid="uid://c205q3ssat7wy" path="res://GPE/CannonBall/cannon_ball.gd" id="1_u2lho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2lho"]
+radius = 5.0990195
+
+[node name="CannonBall" type="Area2D"]
+script = ExtResource("1_u2lho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u2lho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f08vj")
